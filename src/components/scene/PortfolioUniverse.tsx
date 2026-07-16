@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useEffect } from 'react';
 import { useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Text, MeshDistortMaterial, Sparkles, Line } from '@react-three/drei';
 import * as THREE from 'three';
@@ -286,17 +286,31 @@ export function PortfolioUniverse() {
   const { camera } = useThree();
   const controlsRef = useRef<any>(null);
 
-  if (appState !== 'PORTFOLIO') return null;
-
   const handleModuleClick = (id: PortfolioModule, pos: [number, number, number]) => {
     setActiveModule(id);
     const dir = new THREE.Vector3(...pos).normalize();
     const camTarget = new THREE.Vector3(...pos).addScaledVector(dir, 12);
-    gsap.to(camera.position, { x: camTarget.x, y: pos[1] + 6, z: camTarget.z, duration: 1.5, ease: 'power3.inOut' });
+    gsap.to(camera.position, { x: camTarget.x, y: pos[1] + 6, z: camTarget.z, duration: 2.0, ease: 'power3.inOut' });
     if (controlsRef.current) {
-      gsap.to(controlsRef.current.target, { x: pos[0], y: pos[1], z: pos[2], duration: 1.5, ease: 'power3.inOut' });
+      gsap.to(controlsRef.current.target, { x: pos[0], y: pos[1], z: pos[2], duration: 2.0, ease: 'power3.inOut' });
     }
   };
+
+  useEffect(() => {
+    // When entering the Portfolio Universe, automatically zoom into the ABOUT station
+    // so the user immediately sees their intro portfolio page.
+    if (appState === 'PORTFOLIO' && !activeModule) {
+      const aboutDef = MODULE_DEFS.find((m) => m.id === 'ABOUT');
+      if (aboutDef) {
+        // slight delay to ensure controls are mounted and scene is ready
+        setTimeout(() => {
+          handleModuleClick(aboutDef.id, aboutDef.position);
+        }, 100);
+      }
+    }
+  }, [appState, activeModule]);
+
+  if (appState !== 'PORTFOLIO') return null;
 
   return (
     <group>

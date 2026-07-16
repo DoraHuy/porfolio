@@ -14,7 +14,7 @@ function SceneContent() {
   const setAppState = useStore((s) => s.setAppState);
 
   // Refs passed down to IdleState so SceneContent drives GSAP
-  const clusterRef      = useRef<THREE.Group>(null);
+  const techOrbitRef      = useRef<THREE.Group>(null);
   const shockwaveRef    = useRef<THREE.Mesh>(null);
 
   useEffect(() => {
@@ -27,11 +27,11 @@ function SceneContent() {
         tl.to((shockwaveRef.current.material as THREE.MeshBasicMaterial), { opacity: 0, duration: 0.6 }, 0);
       }
 
-      // 0.2s — cluster ascends & spins into vortex
-      if (clusterRef.current) {
-        tl.to(clusterRef.current.position, { y: 10, duration: 2.0, ease: 'power2.inOut' }, 0.2);
-        tl.to(clusterRef.current.rotation, { y: Math.PI * 6, duration: 2.0, ease: 'power2.inOut' }, 0.2);
-        tl.to(clusterRef.current.scale,    { x: 0.01, y: 0.01, z: 0.01, duration: 0.8, ease: 'power3.in' }, 1.4);
+      // 0.2s — TechOrbit ascends & spins into vortex
+      if (techOrbitRef.current) {
+        tl.to(techOrbitRef.current.position, { y: 10, duration: 2.0, ease: 'power2.inOut' }, 0.2);
+        tl.to(techOrbitRef.current.rotation, { y: Math.PI * 6, duration: 2.0, ease: 'power2.inOut' }, 0.2);
+        tl.to(techOrbitRef.current.scale,    { x: 0.01, y: 0.01, z: 0.01, duration: 0.8, ease: 'power3.in' }, 1.4);
       }
     }
   }, [appState, setAppState]);
@@ -50,7 +50,7 @@ function SceneContent() {
       <StarsBackground />
 
       <IdleState
-        clusterRef={clusterRef}
+        techOrbitRef={techOrbitRef}
         shockwaveRef={shockwaveRef}
       />
 
@@ -81,8 +81,15 @@ export function SceneManager() {
   }, [setAppState]);
 
   return (
-    <div style={{ width: '100vw', height: '100vh', position: 'absolute', top: 0, left: 0 }}>
-      <Canvas gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}>
+    <div style={{ width: '100vw', height: '100vh', position: 'absolute', top: 0, left: 0, cursor: 'pointer' }}>
+      <Canvas 
+        gl={{ antialias: true, toneMapping: THREE.ACESFilmicToneMapping, toneMappingExposure: 1.2 }}
+        onPointerMissed={() => {
+          if (useStore.getState().appState === 'IDLE') {
+            setAppState('TRANSITION');
+          }
+        }}
+      >
         <Suspense fallback={null}>
           <SceneContent />
         </Suspense>
