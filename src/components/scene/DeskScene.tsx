@@ -21,127 +21,141 @@ function HackerDeveloper() {
     }
   });
 
-  const hoodieColor = '#0F121C';
-  const pantsColor = '#080A10';
-  const skinColor = '#E2B897';
+  const hoodieColor = '#4FC3F7'; // Blue shirt
+  const pantsColor = '#1A237E'; // Darker blue pants
+  const skinColor = '#FFF1E6';
 
   return (
     <group ref={bodyRef}>
-      {/* ── Upper Body (Hoodie) ── */}
-      <mesh position={[0, 0.9, 0]}>
-        <boxGeometry args={[0.65, 0.75, 0.45]} />
+      {/* ── Upper Body (Shirt) ── */}
+      <mesh position={[0, 0.7, 0]} scale={[1, 1.3, 0.7]}>
+        <cylinderGeometry args={[0.25, 0.25, 0.4, 16]} />
         <meshStandardMaterial color={hoodieColor} roughness={0.7} />
       </mesh>
       
-      {/* Hoodie Front Pocket */}
-      <mesh position={[0, 0.7, 0.23]}>
-        <boxGeometry args={[0.4, 0.25, 0.05]} />
-        <meshStandardMaterial color={hoodieColor} roughness={0.7} />
+      {/* ── Neck ── */}
+      <mesh position={[0, 0.95, 0]}>
+        <cylinderGeometry args={[0.06, 0.08, 0.15, 16]} />
+        <meshStandardMaterial color={skinColor} roughness={0.6} />
       </mesh>
 
-      {/* ── Head & Hood ── */}
-      <group ref={headRef} position={[0, 1.35, 0]}>
-        {/* Hood covering the head */}
-        <mesh position={[0, 0.1, -0.05]}>
-          <boxGeometry args={[0.45, 0.5, 0.45]} />
-          <meshStandardMaterial color={hoodieColor} roughness={0.8} />
-        </mesh>
-        
-        {/* Face (mostly hidden in shadow) */}
-        <mesh position={[0, 0.05, 0.15]}>
-          <boxGeometry args={[0.35, 0.35, 0.3]} />
-          <meshStandardMaterial color={skinColor} roughness={0.6} />
+      {/* ── Head ── */}
+      <group ref={headRef} position={[0, 1.25, 0]}>
+        {/* Face (Oval shape to look less round) */}
+        <mesh position={[0, 0, 0.1]} scale={[1, 1.15, 1]}>
+          <sphereGeometry args={[0.35, 32, 32]} />
+          <meshStandardMaterial color={skinColor} roughness={0.5} />
         </mesh>
 
-        {/* Cyberpunk Visor / Glasses glowing */}
-        <mesh position={[0, 0.15, 0.31]}>
-          <boxGeometry args={[0.38, 0.08, 0.02]} />
-          <meshStandardMaterial color="#4FC3F7" emissive="#4FC3F7" emissiveIntensity={2} toneMapped={false} />
+        {/* Nose */}
+        <mesh position={[0, -0.05, 0.45]}>
+          <sphereGeometry args={[0.03, 16, 16]} />
+          <meshStandardMaterial color={skinColor} roughness={0.5} />
+        </mesh>
+        
+        {/* Hair (Anime Style Spikes) */}
+        <group position={[0, 0.15, -0.05]} scale={[1, 1.1, 1]}>
+          {/* Main hair mass */}
+          <mesh position={[0, 0, 0]}>
+            <sphereGeometry args={[0.38, 32, 32]} />
+            <meshStandardMaterial color="#4A2511" roughness={0.9} />
+          </mesh>
+          {/* Bangs & Spikes */}
+          {[-0.15, 0, 0.15].map((x, i) => (
+            <mesh key={i} position={[x, 0.15, 0.25]} rotation={[0.4, 0, x * -0.5]}>
+              <coneGeometry args={[0.12, 0.35, 8]} />
+              <meshStandardMaterial color="#4A2511" roughness={0.9} />
+            </mesh>
+          ))}
+          {/* Back spikes */}
+          {[-0.2, 0.2].map((x, i) => (
+            <mesh key={i} position={[x, -0.1, -0.25]} rotation={[-0.8, 0, x * 0.5]}>
+              <coneGeometry args={[0.15, 0.4, 8]} />
+              <meshStandardMaterial color="#4A2511" roughness={0.9} />
+            </mesh>
+          ))}
+        </group>
+
+        {/* Cute Eyes */}
+        <mesh position={[-0.12, 0.05, 0.42]}>
+          <sphereGeometry args={[0.03, 16, 16]} />
+          <meshStandardMaterial color="#111" roughness={0.2} />
+        </mesh>
+        <mesh position={[0.12, 0.05, 0.42]}>
+          <sphereGeometry args={[0.03, 16, 16]} />
+          <meshStandardMaterial color="#111" roughness={0.2} />
         </mesh>
 
         {/* ── Headphones ── */}
-        <group position={[0, 0.1, 0]}>
-          {/* Headband over the hood */}
-          <mesh position={[0, 0.26, 0]}>
-            <boxGeometry args={[0.5, 0.04, 0.1]} />
-            <meshStandardMaterial color="#111" roughness={0.3} />
+        <group position={[0, 0, 0]}>
+          {/* Headband over hair */}
+          <mesh position={[0, 0.4, 0]} rotation={[0, 0, Math.PI / 2]}>
+            <cylinderGeometry args={[0.02, 0.02, 0.38, 16]} />
+            <meshStandardMaterial color="#FFF" roughness={0.3} />
           </mesh>
-          <mesh position={[-0.23, 0.15, 0]} rotation={[0, 0, 0.5]}>
-            <boxGeometry args={[0.04, 0.25, 0.1]} />
-            <meshStandardMaterial color="#111" />
+          <mesh position={[-0.19, 0.2, 0]} rotation={[0, 0, 0.5]}>
+            <capsuleGeometry args={[0.02, 0.15, 8, 8]} />
+            <meshStandardMaterial color="#FFF" />
           </mesh>
-          <mesh position={[0.23, 0.15, 0]} rotation={[0, 0, -0.5]}>
-            <boxGeometry args={[0.04, 0.25, 0.1]} />
-            <meshStandardMaterial color="#111" />
+          <mesh position={[0.19, 0.2, 0]} rotation={[0, 0, -0.5]}>
+            <capsuleGeometry args={[0.02, 0.15, 8, 8]} />
+            <meshStandardMaterial color="#FFF" />
           </mesh>
           
           {/* Ear cups */}
-          <mesh position={[-0.26, 0, 0]} rotation={[0, 0, Math.PI/2]}>
-            <cylinderGeometry args={[0.12, 0.12, 0.08, 16]} />
-            <meshStandardMaterial color="#0A0A0A" roughness={0.4} metalness={0.6} />
+          <mesh position={[-0.38, 0.05, 0]} rotation={[0, 0, Math.PI/2]}>
+            <capsuleGeometry args={[0.1, 0.05, 16, 32]} />
+            <meshStandardMaterial color="#111" roughness={0.4} />
           </mesh>
-          <mesh position={[0.26, 0, 0]} rotation={[0, 0, Math.PI/2]}>
-            <cylinderGeometry args={[0.12, 0.12, 0.08, 16]} />
-            <meshStandardMaterial color="#0A0A0A" roughness={0.4} metalness={0.6} />
-          </mesh>
-          
-          {/* Glowing rings on ear cups */}
-          <mesh position={[-0.31, 0, 0]} rotation={[0, 0, Math.PI/2]}>
-            <torusGeometry args={[0.08, 0.015, 16, 32]} />
-            <meshStandardMaterial color="#AB47BC" emissive="#AB47BC" emissiveIntensity={2} toneMapped={false} />
-          </mesh>
-          <mesh position={[0.31, 0, 0]} rotation={[0, 0, Math.PI/2]}>
-            <torusGeometry args={[0.08, 0.015, 16, 32]} />
-            <meshStandardMaterial color="#AB47BC" emissive="#AB47BC" emissiveIntensity={2} toneMapped={false} />
+          <mesh position={[0.38, 0.05, 0]} rotation={[0, 0, Math.PI/2]}>
+            <capsuleGeometry args={[0.1, 0.05, 16, 32]} />
+            <meshStandardMaterial color="#111" roughness={0.4} />
           </mesh>
         </group>
       </group>
 
-      {/* ── Arms (Hoodie Sleeves) typing ── */}
-      {[-0.4, 0.4].map((x, i) => (
+      {/* ── Arms typing ── */}
+      {[-0.22, 0.22].map((x, i) => (
         <group key={i}>
           {/* Upper arm */}
-          <mesh position={[x, 0.95, 0]} rotation={[0, 0, x > 0 ? -0.2 : 0.2]}>
-            <capsuleGeometry args={[0.09, 0.4, 4, 8]} />
+          <mesh position={[x, 0.65, 0.05]} rotation={[0.4, 0, x > 0 ? -0.1 : 0.1]}>
+            <capsuleGeometry args={[0.05, 0.25, 4, 8]} />
             <meshStandardMaterial color={hoodieColor} roughness={0.7} />
           </mesh>
           {/* Forearm reaching to keyboard */}
-          <mesh position={[x + (x > 0 ? 0.05 : -0.05), 0.72, -0.25]} rotation={[-0.8, 0, x > 0 ? -0.1 : 0.1]}>
-            <capsuleGeometry args={[0.08, 0.45, 4, 8]} />
-            <meshStandardMaterial color={hoodieColor} roughness={0.7} />
+          <mesh position={[x > 0 ? 0.25 : -0.25, 0.48, 0.25]} rotation={[1.2, 0, x > 0 ? -0.1 : 0.1]}>
+            <capsuleGeometry args={[0.04, 0.25, 4, 8]} />
+            <meshStandardMaterial color={skinColor} roughness={0.7} />
           </mesh>
           {/* Hands */}
-          <mesh position={[x > 0 ? 0.35 : -0.35, 0.53, -0.52]}>
-            <boxGeometry args={[0.12, 0.06, 0.12]} />
-            <meshStandardMaterial color={skinColor} roughness={0.6} />
+          <mesh position={[x > 0 ? 0.28 : -0.28, 0.43, 0.38]}>
+            <sphereGeometry args={[0.05, 16, 16]} />
+            <meshStandardMaterial color={skinColor} roughness={0.5} />
           </mesh>
         </group>
       ))}
 
       {/* ── Lower Body (Seated) ── */}
-      <mesh position={[0, 0.14, 0.1]}>
-        <boxGeometry args={[0.62, 0.28, 0.45]} />
+      <mesh position={[0, 0.35, 0.05]}>
+        <boxGeometry args={[0.35, 0.2, 0.25]} />
         <meshStandardMaterial color={pantsColor} roughness={0.8} />
       </mesh>
-      {[-0.18, 0.18].map((x, i) => (
+      {[-0.12, 0.12].map((x, i) => (
         <group key={i}>
-          <mesh position={[x, 0.0, 0.4]} rotation={[Math.PI / 2.1, 0, 0]}>
-            <capsuleGeometry args={[0.11, 0.4, 4, 8]} />
+          {/* Thigh (pointing forward) */}
+          <mesh position={[x, 0.3, 0.2]} rotation={[Math.PI / 2, 0, 0]}>
+            <cylinderGeometry args={[0.07, 0.07, 0.25, 16]} />
             <meshStandardMaterial color={pantsColor} roughness={0.8} />
           </mesh>
-          <mesh position={[x, -0.3, 0.62]} rotation={[-0.5, 0, 0]}>
-            <capsuleGeometry args={[0.09, 0.5, 4, 8]} />
-            <meshStandardMaterial color={pantsColor} roughness={0.8} />
+          {/* Calf (pointing down) */}
+          <mesh position={[x, 0.15, 0.32]} rotation={[0, 0, 0]}>
+            <cylinderGeometry args={[0.05, 0.04, 0.25, 16]} />
+            <meshStandardMaterial color={skinColor} roughness={0.8} />
           </mesh>
           {/* Sneaker */}
-          <mesh position={[x, -0.6, 0.7]}>
-            <boxGeometry args={[0.18, 0.12, 0.32]} />
+          <mesh position={[x, 0.0, 0.36]}>
+            <boxGeometry args={[0.1, 0.08, 0.18]} />
             <meshStandardMaterial color="#FFFFFF" roughness={0.4} />
-          </mesh>
-          {/* Sneaker accent */}
-          <mesh position={[x, -0.6, 0.86]}>
-            <boxGeometry args={[0.19, 0.04, 0.04]} />
-            <meshStandardMaterial color="#4FC3F7" emissive="#4FC3F7" emissiveIntensity={1} toneMapped={false} />
           </mesh>
         </group>
       ))}
@@ -326,8 +340,8 @@ function Chair() {
 // ─── Full Scene ───────────────────────────────────────────────────────────────
 export function DeskScene() {
   return (
-    // Character faces -Z (toward monitor). Camera is at 45° left-side to see face.
-    <group>
+    // Rotate the entire scene so we can see a 3/4 angled view (not perfectly sideways)
+    <group rotation={[0, -Math.PI / 8, 0]}>
       {/* Desk at origin */}
       <Desk />
 

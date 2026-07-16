@@ -33,9 +33,10 @@ export function openCVForPrint() {
     .avatar {
       width: 90px; height: 90px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #4FC3F7, #AB47BC);
+      background: url(/avatar.png) center/cover;
       display: flex; align-items: center; justify-content: center;
       font-size: 40px; flex-shrink: 0;
+      border: 2px solid #4FC3F7;
     }
     .header-info h1 {
       font-size: 26px; font-weight: 800;
@@ -156,7 +157,7 @@ export function openCVForPrint() {
   <div class="page">
     <!-- ─── Header ─── -->
     <div class="header">
-      <div class="avatar">👨‍💻</div>
+      <div class="avatar"></div>
       <div class="header-info">
         <h1>Nguyễn Văn A</h1>
         <div class="title">Full-Stack Developer</div>

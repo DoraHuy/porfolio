@@ -48,12 +48,11 @@ function AboutSection() {
         {/* Avatar */}
         <div style={{
           width: 160, height: 160, borderRadius: '50%', flexShrink: 0,
-          background: 'linear-gradient(135deg, #4FC3F7, #AB47BC)',
+          background: 'url(/avatar.png) center/cover',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
-          fontSize: 72, boxShadow: '0 0 40px rgba(79, 195, 247, 0.4)',
+          boxShadow: '0 0 40px rgba(79, 195, 247, 0.4)',
           border: '3px solid rgba(79, 195, 247, 0.5)'
         }}>
-          👨‍💻
         </div>
         {/* Info */}
         <div style={{ flex: 1, minWidth: 240 }}>
@@ -102,7 +101,7 @@ function SkillsSection() {
   return (
     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
       <h2 style={{ fontSize: 28, fontWeight: 700, color: '#4FC3F7', marginTop: 0 }}>Kỹ năng & Công nghệ</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 24 }}>
+      <div className="skills-grid">
         {Object.entries(SKILLS).map(([cat, items], ci) => {
           const colors = ['#4FC3F7', '#66BB6A', '#AB47BC', '#FFA726'];
           const c = colors[ci % colors.length];
@@ -289,7 +288,7 @@ function ContactSection() {
       <p style={{ color: 'rgba(255,255,255,0.6)', lineHeight: 1.7, marginBottom: 32 }}>
         Tôi luôn sẵn sàng hợp tác cho các dự án thú vị. Hãy kết nối với tôi qua các kênh bên dưới!
       </p>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16 }}>
+      <div className="contact-grid">
         {[
           { label: 'Email', value: 'dev@email.com', icon: '✉️', color: '#4FC3F7', href: 'mailto:dev@email.com' },
           { label: 'GitHub', value: 'github.com/username', icon: '🐙', color: '#E2E2E2', href: '#' },

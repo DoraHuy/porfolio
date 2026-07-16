@@ -4,7 +4,7 @@ import { EffectComposer, Bloom, Vignette } from '@react-three/postprocessing';
 import { StarsBackground } from './StarsBackground';
 import { IdleState } from './IdleState';
 import { PortfolioUniverse } from './PortfolioUniverse';
-import { Suspense, useEffect, useRef } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import { useStore } from '../../store/useStore';
 import * as THREE from 'three';
 import gsap from 'gsap';
@@ -12,6 +12,15 @@ import gsap from 'gsap';
 function SceneContent() {
   const appState = useStore((s) => s.appState);
   const setAppState = useStore((s) => s.setAppState);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Responsive camera handling
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Refs passed down to IdleState so SceneContent drives GSAP
   const techOrbitRef      = useRef<THREE.Group>(null);
@@ -38,8 +47,8 @@ function SceneContent() {
 
   return (
     <>
-      {/* Camera at back-right 45° angle — sees hacker from behind facing screens */}
-      <PerspectiveCamera makeDefault position={[8, 4, 8]} fov={45} />
+      {/* Camera moves further away on mobile (width < 768px) so the scene isn't cut off */}
+      <PerspectiveCamera makeDefault position={isMobile ? [12, 6, 12] : [8, 4, 8]} fov={45} />
       <color attach="background" args={['#0A0A0F']} />
 
       {/* Lighting */}
