@@ -6,7 +6,7 @@ export function openCVForPrint() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CV – Nguyễn Văn A</title>
+  <title>CV – Hồ Ngọc Huy</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -33,7 +33,7 @@ export function openCVForPrint() {
     .avatar {
       width: 90px; height: 90px;
       border-radius: 50%;
-      background: url(/avatar.png) center/cover;
+      background: url(/avatar.jpg) center/cover;
       display: flex; align-items: center; justify-content: center;
       font-size: 40px; flex-shrink: 0;
       border: 2px solid #4FC3F7;
@@ -159,14 +159,13 @@ export function openCVForPrint() {
     <div class="header">
       <div class="avatar"></div>
       <div class="header-info">
-        <h1>Nguyễn Văn A</h1>
+        <h1>Hồ Ngọc Huy</h1>
         <div class="title">Full-Stack Developer</div>
         <div class="contacts">
-          <span class="contact-item">✉️ dev@email.com</span>
-          <span class="contact-item">📱 +84 901 234 567</span>
-          <span class="contact-item">🐙 github.com/username</span>
-          <span class="contact-item">💼 linkedin.com/in/dev</span>
-          <span class="contact-item">📍 Hà Nội, Việt Nam</span>
+          <span class="contact-item">✉️ huyn70972@gmail.com</span>
+          <span class="contact-item">📱 0329307492</span>
+          <span class="contact-item">🐙 github.com/DoraHuy</span>
+          <span class="contact-item">📍 Bình Định, Việt Nam</span>
         </div>
       </div>
     </div>
@@ -181,24 +180,24 @@ export function openCVForPrint() {
           <div class="section-title">Kỹ năng</div>
 
           <div class="skill-bar">
-            <div class="skill-bar-header"><span>React / Next.js</span><span>90%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="width:90%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-bar-header"><span>TypeScript</span><span>85%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="width:85%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-bar-header"><span>Spring Boot / Java</span><span>80%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="width:80%"></div></div>
-          </div>
-          <div class="skill-bar">
-            <div class="skill-bar-header"><span>Docker / DevOps</span><span>70%</span></div>
+            <div class="skill-bar-header"><span>React / Next.js</span><span>70%</span></div>
             <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
           </div>
           <div class="skill-bar">
-            <div class="skill-bar-header"><span>Three.js / R3F</span><span>75%</span></div>
-            <div class="bar-bg"><div class="bar-fill" style="width:75%"></div></div>
+            <div class="skill-bar-header"><span>TypeScript</span><span>70%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:70%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-header"><span>Spring Boot / Java</span><span>50%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:50%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-header"><span>NodeJS</span><span>50%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:50%"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-header"><span>Database</span><span>60%</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width:60%"></div></div>
           </div>
         </div>
 
@@ -211,8 +210,12 @@ export function openCVForPrint() {
               <span class="chip">React</span>
               <span class="chip">Next.js</span>
               <span class="chip">TypeScript</span>
-              <span class="chip">Vite</span>
-              <span class="chip">Three.js</span>
+              <span class="chip">axios</span>
+              <span class="chip">zustand</span>
+              <span class="chip">tanstack query</span>
+              <span class="chip">zod</span>
+              <span class="chip">SWR</span>
+              <span class="chip">Tailwind CSS</span>
             </div>
           </div>
           <div class="skill-group">
@@ -222,22 +225,21 @@ export function openCVForPrint() {
               <span class="chip green">Node.js</span>
               <span class="chip green">Java</span>
               <span class="chip green">REST API</span>
+              <span class="chip green">GraphQL</span>
             </div>
           </div>
           <div class="skill-group">
             <div class="skill-group-name">Database</div>
             <div class="chips">
-              <span class="chip purple">PostgreSQL</span>
+              <span class="chip purple">MySQL</span>
+              <span class="chip purple">Prisma</span>
               <span class="chip purple">Redis</span>
-              <span class="chip purple">MongoDB</span>
             </div>
           </div>
           <div class="skill-group">
             <div class="skill-group-name">DevOps</div>
             <div class="chips">
-              <span class="chip orange">Docker</span>
-              <span class="chip orange">AWS</span>
-              <span class="chip orange">GitHub CI/CD</span>
+              <span class="chip orange">Chưa có</span>
             </div>
           </div>
         </div>
@@ -246,19 +248,9 @@ export function openCVForPrint() {
         <div class="section">
           <div class="section-title">Học vấn</div>
           <div class="edu-item">
-            <div class="edu-degree">🎓 Cử nhân Kỹ thuật PM</div>
-            <div class="edu-school">ĐH Công nghệ thông tin</div>
-            <div class="edu-year">2019 – 2023 · GPA 3.6/4.0</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-degree">☁️ AWS Solutions Architect</div>
-            <div class="edu-school">Amazon Web Services</div>
-            <div class="edu-year">2023 · Associate Level</div>
-          </div>
-          <div class="edu-item">
-            <div class="edu-degree">🌿 Spring Professional</div>
-            <div class="edu-school">VMware / Broadcom</div>
-            <div class="edu-year">2022</div>
+            <div class="edu-degree">🎓 Đại học Duy Tân</div>
+            <div class="edu-school">Chuyên ngành Công nghệ thông tin</div>
+            <div class="edu-year">2021 – 2025</div>
           </div>
         </div>
 
@@ -282,10 +274,9 @@ export function openCVForPrint() {
         <div class="section">
           <div class="section-title">Giới thiệu</div>
           <p style="font-size:12.5px;color:#333;line-height:1.7">
-            Lập trình viên Full-Stack với 3+ năm kinh nghiệm xây dựng ứng dụng web hiện đại, hiệu năng cao.
+            Lập trình viên Full-Stack với 1 năm kinh nghiệm xây dựng ứng dụng web hiện đại, hiệu năng cao.
             Chuyên sâu về <strong>React / Next.js</strong> ở phía frontend và <strong>Spring Boot / Node.js</strong>
-            ở phía backend. Có kinh nghiệm triển khai hệ thống với Docker, CI/CD và AWS.
-            Đam mê tạo ra trải nghiệm người dùng xuất sắc và kiến trúc hệ thống scalable.
+            ở phía backend. Đam mê thiết kế giao diện tối ưu và phát triển hệ thống ổn định, đáng tin cậy.
           </p>
         </div>
 
@@ -295,28 +286,15 @@ export function openCVForPrint() {
 
           <div class="exp-item">
             <div class="exp-header">
-              <div class="exp-title">Full-Stack Developer</div>
-              <div class="exp-period">01/2023 – Nay</div>
+              <div class="exp-title">Full-Stack / Frontend Developer (Projects & Freelance)</div>
+              <div class="exp-period">2023 – Nay</div>
             </div>
-            <div class="exp-sub">Công ty TNHH ABC Technology · Hà Nội</div>
+            <div class="exp-sub">Dự án cá nhân và Cộng tác phát triển</div>
             <ul class="exp-desc">
-              <li>Phát triển và duy trì hệ thống thương mại điện tử với 100k+ người dùng/tháng</li>
-              <li>Xây dựng REST API với Spring Boot, tích hợp Redis cache giảm 60% latency</li>
-              <li>Migrate hệ thống monolith sang microservices với Docker & Kubernetes</li>
-              <li>Review code và mentor cho 3 junior developers</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">Frontend Developer (Intern → Junior)</div>
-              <div class="exp-period">06/2021 – 12/2022</div>
-            </div>
-            <div class="exp-sub">Startup XYZ · TP. Hồ Chí Minh</div>
-            <ul class="exp-desc">
-              <li>Xây dựng dashboard quản lý với React, TypeScript và Chart.js</li>
-              <li>Tích hợp WebSocket cho tính năng real-time notification</li>
-              <li>Cải thiện Core Web Vitals, tăng điểm Lighthouse từ 65 lên 95</li>
+              <li>Phát triển các hệ thống Web Application sử dụng React, Next.js, TypeScript và Spring Boot.</li>
+              <li>Xây dựng hệ thống Quản lý kho hàng chuyên nghiệp (Warehouse Management System) hỗ trợ quản lý hàng tồn, phân phối sản phẩm.</li>
+              <li>Thiết kế giao diện người dùng tối ưu hóa UX/UI bằng Tailwind CSS, tích hợp quản lý trạng thái bằng Zustand, SWR và TanStack Query.</li>
+              <li>Xây dựng API RESTful và tích hợp các công nghệ Queue như RabbitMQ, quản lý cơ sở dữ liệu MySQL thông qua Prisma ORM.</li>
             </ul>
           </div>
         </div>
@@ -327,37 +305,34 @@ export function openCVForPrint() {
 
           <div class="exp-item">
             <div class="exp-header">
+              <div class="exp-title">📦 WMS Pro & Warehouse Management</div>
+              <div class="exp-period">2023 – 2024</div>
+            </div>
+            <div class="exp-sub">Spring Boot · React · MySQL · Prisma · Java</div>
+            <div class="exp-desc">
+              Hệ thống quản lý kho hàng hỗ trợ theo dõi tồn kho, xuất nhập kho và báo cáo thống kê dữ liệu trực quan.
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <div class="exp-title">🤝 Gov Volunteer Hub</div>
+              <div class="exp-period">2023</div>
+            </div>
+            <div class="exp-sub">React · Next.js · Node.js · Tailwind CSS</div>
+            <div class="exp-desc">
+              Nền tảng kết nối các hoạt động tình nguyện, hỗ trợ quản lý chiến dịch và thành viên đăng ký tham gia.
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
               <div class="exp-title">🌐 3D Portfolio Universe</div>
               <div class="exp-period">2024</div>
             </div>
-            <div class="exp-sub">React · Three.js · TypeScript · GSAP · Vite</div>
+            <div class="exp-sub">React · Three.js · TypeScript · Tailwind CSS · Vite</div>
             <div class="exp-desc">
-              Trang portfolio 3D với nhân vật hacker ngồi gõ code, logo công nghệ bay xung quanh,
-              hiệu ứng chuyển cảnh smooth bằng GSAP.
-            </div>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">🛒 Full-Stack E-Commerce Platform</div>
-              <div class="exp-period">2023</div>
-            </div>
-            <div class="exp-sub">Spring Boot · React · PostgreSQL · Docker · Redis</div>
-            <div class="exp-desc">
-              Hệ thống TMĐT hoàn chỉnh với quản lý sản phẩm, giỏ hàng, thanh toán VNPay,
-              admin dashboard và CI/CD pipeline tự động.
-            </div>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-header">
-              <div class="exp-title">💬 Real-time Chat Application</div>
-              <div class="exp-period">2022</div>
-            </div>
-            <div class="exp-sub">Node.js · Socket.io · MongoDB · React · JWT</div>
-            <div class="exp-desc">
-              Ứng dụng chat thời gian thực hỗ trợ group chat, file sharing,
-              emoji reactions và xác thực JWT.
+              Trang portfolio 3D tương tác sinh động với background tinh tú, mô hình 3D lập trình viên và hiệu ứng chuyển động.
             </div>
           </div>
         </div>

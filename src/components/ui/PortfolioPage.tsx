@@ -14,31 +14,64 @@ const NAV_ITEMS: { id: Section; label: string; icon: string }[] = [
 ];
 
 const SKILLS = {
-  Frontend: ['React', 'Next.js', 'TypeScript', 'Vite', 'Tailwind CSS', 'Three.js'],
-  Backend:  ['Node.js', 'Spring Boot', 'Java', 'RESTful API', 'GraphQL'],
-  Database: ['PostgreSQL', 'MySQL', 'Redis', 'MongoDB', 'Prisma'],
-  DevOps:   ['Docker', 'GitHub Actions', 'AWS', 'Nginx', 'Linux'],
+  Frontend: ['React', 'Next.js', 'TypeScript', 'axios', 'zustand', 'tanstack query', 'zod', 'SWR', 'Tailwind CSS'],
+  Backend:  ['Spring Boot', 'Node.js', 'Java', 'RESTful API', 'GraphQL'],
+  Database: ['MySQL', 'Prisma', 'Redis'],
+  DevOps:   ['Chưa có'],
 };
 
-const PROJECTS = [
+interface ProjectItem {
+  name: string;
+  desc: string;
+  tech: string[];
+  color: string;
+  github?: string;
+  live?: string;
+}
+
+const PROJECTS: ProjectItem[] = [
+  {
+    name: 'WMS Pro & Warehouse Management',
+    desc: 'Hệ thống quản lý kho hàng chuyên nghiệp (Warehouse Management System), hỗ trợ theo dõi hàng tồn kho, xuất nhập kho và báo cáo doanh thu.',
+    tech: ['Spring Boot', 'React', 'Java', 'MySQL', 'Prisma'],
+    color: '#66BB6A',
+    github: 'https://github.com/Huynhngocti/Warehouse_Management',
+  },
   {
     name: '3D Portfolio Universe',
-    desc: 'Trang portfolio cá nhân 3D sử dụng React Three Fiber, GSAP animation, TypeScript và Vite. Nhân vật hacker ngồi gõ code với các logo công nghệ xoay xung quanh.',
-    tech: ['React', 'Three.js', 'TypeScript', 'GSAP', 'Vite'],
+    desc: 'Trang portfolio cá nhân 3D tương tác sinh động với background tinh tú, mô hình lập trình viên 3D và các hiệu ứng chuyển động mượt mà.',
+    tech: ['React', 'Three.js', 'TypeScript', 'Tailwind CSS', 'Vite'],
     color: '#4FC3F7',
+    github: 'https://github.com/DoraHuy/porfolio',
   },
   {
-    name: 'Full-Stack E-Commerce',
-    desc: 'Hệ thống thương mại điện tử với Spring Boot backend, React frontend, PostgreSQL database và Docker deployment.',
-    tech: ['Spring Boot', 'React', 'PostgreSQL', 'Docker', 'Redis'],
-    color: '#66BB6A',
-  },
-  {
-    name: 'Real-time Chat App',
-    desc: 'Ứng dụng chat thời gian thực với WebSocket, JWT authentication và MongoDB.',
-    tech: ['Node.js', 'Socket.io', 'MongoDB', 'JWT', 'React'],
+    name: 'Gov Volunteer Hub',
+    desc: 'Cổng thông tin kết nối và quản lý các hoạt động tình nguyện, hỗ trợ đăng ký và theo dõi chiến dịch tình nguyện.',
+    tech: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'TypeScript'],
     color: '#AB47BC',
+    github: 'https://github.com/anhdev99/gov-volunteer-hub',
   },
+  {
+    name: 'Graduation Invitation Web',
+    desc: 'Ứng dụng thiệp mời tốt nghiệp trực tuyến với giao diện thiết kế tinh tế và hiệu ứng lật mở thiệp độc đáo.',
+    tech: ['React', 'Tailwind CSS', 'Vite'],
+    color: '#FFD54F',
+    github: 'https://github.com/DoraHuy/ThiepMoiTotNghiep',
+  },
+  {
+    name: 'RabbitMQ Integration Test',
+    desc: 'Dự án demo tích hợp RabbitMQ để truyền tải thông điệp bất đồng bộ giữa các service, tối ưu hiệu năng xử lý tác vụ nền.',
+    tech: ['Spring Boot', 'Java', 'RabbitMQ'],
+    color: '#FFA726',
+    github: 'https://github.com/dh1506/TestRabbitMQ',
+  },
+  {
+    name: 'Todo List Application',
+    desc: 'Ứng dụng quản lý công việc hàng ngày với giao diện tối giản, trực quan, hỗ trợ kéo thả và nhắc nhở nhiệm vụ.',
+    tech: ['React', 'Next.js', 'MySQL', 'Prisma', 'Tailwind CSS'],
+    color: '#EC407A',
+    github: 'https://github.com/DoraHuy/TodoList',
+  }
 ];
 
 function AboutSection() {
@@ -48,7 +81,7 @@ function AboutSection() {
         {/* Avatar */}
         <div style={{
           width: 160, height: 160, borderRadius: '50%', flexShrink: 0,
-          background: 'url(/avatar.png) center/cover',
+          background: 'url(/avatar.jpg) center/cover',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           boxShadow: '0 0 40px rgba(79, 195, 247, 0.4)',
           border: '3px solid rgba(79, 195, 247, 0.5)'
@@ -57,16 +90,16 @@ function AboutSection() {
         {/* Info */}
         <div style={{ flex: 1, minWidth: 240 }}>
           <h1 style={{ fontSize: 36, fontWeight: 800, margin: 0, background: 'linear-gradient(90deg, #4FC3F7, #AB47BC)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-            Nguyễn Văn A
+            Hồ Ngọc Huy
           </h1>
           <p style={{ color: '#FFD54F', fontSize: 16, margin: '8px 0', letterSpacing: 2, textTransform: 'uppercase' }}>
             Full-Stack Developer
           </p>
           <p style={{ color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, margin: '16px 0', fontSize: 15 }}>
-            Lập trình viên Full-Stack với niềm đam mê xây dựng những ứng dụng web hiện đại, hiệu năng cao và trải nghiệm người dùng tuyệt vời. Chuyên về React, Spring Boot và kiến trúc hệ thống scalable.
+            Lập trình viên với niềm đam mê xây dựng những ứng dụng web hiện đại, hiệu năng cao và trải nghiệm người dùng tuyệt vời. Chuyên sâu về React, NextJS ở Frontend và Spring Boot, NodeJS ở Backend.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            {['📍 Hà Nội, Việt Nam', '💼 3 năm kinh nghiệm', '🌐 Open to Remote'].map((t, i) => (
+            {['📍 Bình Định, Việt Nam', '💼 1 năm kinh nghiệm', '🎓 Đại học Duy Tân'].map((t, i) => (
               <span key={i} style={{
                 padding: '6px 14px', borderRadius: 20, fontSize: 13, color: 'rgba(255,255,255,0.8)',
                 background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)'
@@ -79,10 +112,10 @@ function AboutSection() {
       {/* Stats */}
       <div className="about-stats">
         {[
-          { label: 'Dự án hoàn thành', value: '20+', color: '#4FC3F7' },
-          { label: 'Năm kinh nghiệm', value: '3+',  color: '#66BB6A' },
-          { label: 'Công nghệ sử dụng', value: '15+', color: '#AB47BC' },
-          { label: 'Github commits', value: '500+', color: '#FFD54F' },
+          { label: 'Dự án hoàn thành', value: '7+', color: '#4FC3F7' },
+          { label: 'Năm kinh nghiệm', value: '1',  color: '#66BB6A' },
+          { label: 'Công nghệ sử dụng', value: '12+', color: '#AB47BC' },
+          { label: 'Github commits', value: '200+', color: '#FFD54F' },
         ].map((stat, i) => (
           <div key={i} style={{
             padding: 20, borderRadius: 16, textAlign: 'center',
@@ -133,11 +166,11 @@ function SkillsSection() {
       <div style={{ marginTop: 32 }}>
         <h3 style={{ color: 'rgba(255,255,255,0.7)', fontSize: 16, marginBottom: 20 }}>Mức độ thành thạo</h3>
         {[
-          { name: 'React / Next.js', level: 90, color: '#4FC3F7' },
-          { name: 'TypeScript',      level: 85, color: '#AB47BC' },
-          { name: 'Spring Boot / Java', level: 80, color: '#66BB6A' },
-          { name: 'Docker / DevOps', level: 70, color: '#FFA726' },
-          { name: 'Three.js / R3F',  level: 75, color: '#FFD54F' },
+          { name: 'React / Next.js', level: 70, color: '#4FC3F7' },
+          { name: 'TypeScript',      level: 70, color: '#AB47BC' },
+          { name: 'Spring Boot / Java', level: 50, color: '#66BB6A' },
+          { name: 'NodeJS',          level: 50, color: '#FFA726' },
+          { name: 'Database (MySQL/Prisma/Redis)', level: 60, color: '#FFD54F' },
         ].map((item) => (
           <div key={item.name} style={{ marginBottom: 16 }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
@@ -190,19 +223,27 @@ function ProjectsSection() {
               ))}
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 20 }}>
-              <button style={{
-                padding: '8px 18px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
-                background: proj.color, color: '#000', border: 'none', fontWeight: 700
-              }}>
+              <button
+                onClick={() => proj.github && window.open(proj.github, '_blank')}
+                style={{
+                  padding: '8px 18px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
+                  background: proj.color, color: '#000', border: 'none', fontWeight: 700
+                }}
+              >
                 🔗 GitHub
               </button>
-              <button style={{
-                padding: '8px 18px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
-                background: 'transparent', color: proj.color,
-                border: `1px solid ${proj.color}60`
-              }}>
-                🌐 Live Demo
-              </button>
+              {proj.live && (
+                <button
+                  onClick={() => window.open(proj.live, '_blank')}
+                  style={{
+                    padding: '8px 18px', borderRadius: 8, fontSize: 13, cursor: 'pointer',
+                    background: 'transparent', color: proj.color,
+                    border: `1px solid ${proj.color}60`
+                  }}
+                >
+                  🌐 Live Demo
+                </button>
+              )}
             </div>
           </motion.div>
         ))}
@@ -218,36 +259,12 @@ function EducationSection() {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
         {[
           {
-            title: 'Đại học Công nghệ thông tin',
-            sub: 'Cử nhân Kỹ thuật Phần mềm',
-            time: '2019 – 2023',
+            title: 'Đại học Duy Tân',
+            sub: 'Chuyên ngành Công nghệ thông tin',
+            time: '2021 – 2025',
             icon: '🎓',
             color: '#FFD54F',
-            detail: 'GPA: 3.6/4.0 | Đề tài tốt nghiệp: Xây dựng hệ thống quản lý tài nguyên cloud',
-          },
-          {
-            title: 'AWS Certified Solutions Architect',
-            sub: 'Amazon Web Services',
-            time: '2023',
-            icon: '☁️',
-            color: '#FFA726',
-            detail: 'Associate Level — Điểm thi: 890/1000',
-          },
-          {
-            title: 'Spring Professional Certification',
-            sub: 'VMware / Broadcom',
-            time: '2022',
-            icon: '🌿',
-            color: '#66BB6A',
-            detail: 'Spring Framework 6 — Spring Boot, Security, Data',
-          },
-          {
-            title: 'Meta Front-End Developer',
-            sub: 'Coursera / Meta',
-            time: '2021',
-            icon: '⚛️',
-            color: '#4FC3F7',
-            detail: 'Chuyên sâu React, UI/UX Design, JavaScript ES6+',
+            detail: 'Khoa Công nghệ thông tin | Đào tạo Kỹ sư/Cử nhân CNTT',
           },
         ].map((edu, i) => (
           <motion.div
@@ -290,12 +307,12 @@ function ContactSection() {
       </p>
       <div className="contact-grid">
         {[
-          { label: 'Email', value: 'dev@email.com', icon: '✉️', color: '#4FC3F7', href: 'mailto:dev@email.com' },
-          { label: 'GitHub', value: 'github.com/username', icon: '🐙', color: '#E2E2E2', href: '#' },
-          { label: 'LinkedIn', value: 'linkedin.com/in/dev', icon: '💼', color: '#0A66C2', href: '#' },
-          { label: 'Phone', value: '+84 901 234 567', icon: '📱', color: '#66BB6A', href: 'tel:+84901234567' },
+          { label: 'Email', value: 'huyn70972@gmail.com', icon: '✉️', color: '#4FC3F7', href: 'mailto:huyn70972@gmail.com' },
+          { label: 'GitHub', value: 'github.com/DoraHuy', icon: '🐙', color: '#E2E2E2', href: 'https://github.com/DoraHuy' },
+          { label: 'Địa chỉ', value: 'Bình Định, Việt Nam', icon: '📍', color: '#FFA726', href: '#' },
+          { label: 'Điện thoại', value: '0329307492', icon: '📱', color: '#66BB6A', href: 'tel:0329307492' },
         ].map((c) => (
-          <a key={c.label} href={c.href} style={{ textDecoration: 'none' }}>
+          <a key={c.label} href={c.href} style={{ textDecoration: 'none' }} target={c.href !== '#' ? '_blank' : undefined} rel="noreferrer">
             <div style={{
               padding: 20, borderRadius: 16, cursor: 'pointer',
               background: 'rgba(255,255,255,0.04)',
